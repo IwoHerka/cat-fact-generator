@@ -3,7 +3,7 @@
 
 (defrecord CmdPresenter []
   e/FactPresenter
-  (-present-fact [this fact]) (println fact))
+  (-present-fact [this fact] (println fact)))
 
-(defn make-present []
+(defn make-presenter []
   (->CmdPresenter))

@@ -3,10 +3,14 @@
             [clojure.data.json :as json]
             [clj-http.client :as http]))
 
+(def ^:private cat-url "https://catfact.ninja/fact")
+
+(defn get-a-fact []
+  (get (json/read-str (:body (http/get cat-url))) "fact"))
+
 (defrecord ApiProvider []
   e/FactProvider
-  (-get-fact [this] ))
+  (-get-fact [this] (get-a-fact)))
 
-(json/read-str (:body (http/get "https://catfact.ninja/fact")))
-
-(get (http/get "https://catfact.ninja/fact") :body)
+(defn make-provider []
+  (->ApiProvider))

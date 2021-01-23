@@ -1,7 +1,8 @@
 (ns cat-fact-generator.core
+  (:require [cat-fact-generator.state :as s])
   (:gen-class))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (println "Hello, World!"))
+  (s/start-program)
+  (s/get-fact))
